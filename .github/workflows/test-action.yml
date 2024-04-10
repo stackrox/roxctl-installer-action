@@ -1,0 +1,31 @@
+# This workflow is provided for testing changes to the action.
+
+name: roxctl action development self-test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-scan:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        version: [ latest, 4.3.0 ]
+        central-endpoint: [ '', 'https://staging.demo.stackrox.com']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check roxctl is installed
+        uses: ./actions/install-roxctl
+        with:
+          roxctl-release: ${{ matrix.version }}
+          central-endpoint: ${{ matrix.central-endpoint }}
+          central-token: ${{ secrets.STAGING_API_TOKEN }}
+
+      - name: Validate the roxctl install
+        shell: bash
+        run: roxctl version
