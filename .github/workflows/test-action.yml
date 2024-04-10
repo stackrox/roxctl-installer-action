@@ -3,9 +3,8 @@
 name: roxctl action development self-test
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
+  push:
     branches: [ main ]
 
 jobs:
