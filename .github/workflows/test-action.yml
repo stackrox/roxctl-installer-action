@@ -17,9 +17,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-
-      - name: Check roxctl is installed
-        uses: ./actions/install-roxctl
+      - name: Install roxctl
+        uses: ./
         with:
           roxctl-release: ${{ matrix.version }}
           central-endpoint: ${{ matrix.central-endpoint }}
