@@ -1,5 +1,5 @@
 name: Install roxctl
-description: Download roxctl to installation folder
+description: Download roxctl for use in GitHub Actions
 inputs:
   roxctl-release:
     description: 'roxctl release version to be installed'
