@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
-        version: [ latest, 4.3.0 ]
+        version: [ 4.4.0, 4.3.0 ]
         central-endpoint: [ '', 'https://staging.demo.stackrox.com']
     runs-on: ${{ matrix.os }}
     steps:
