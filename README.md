@@ -5,7 +5,7 @@ This is a GitHub action for installing `roxctl` on Github Action runners. `roxct
 ### Example
 
 ```yaml
-      - uses: ivan-degtiarenko/test-repo/actions/install-roxctl@main
+      - uses: stackrox/roxctl-installer-action@main
         with:
           install-dir: /usr/local/bin
           roxctl-release: 4.4.0
