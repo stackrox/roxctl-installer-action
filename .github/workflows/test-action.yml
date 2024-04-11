@@ -26,4 +26,5 @@ jobs:
 
       - name: Validate the roxctl install
         shell: bash
-        run: roxctl version
+        run: |
+          [[ "${{ matrix.version }}" == $(roxctl version) ]]
