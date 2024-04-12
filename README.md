@@ -1,6 +1,6 @@
 # roxctl-installer-action GitHub Action
 
-This is a GitHub action for installing `roxctl` on Github Action runners. `roxctl` is a command-line interface (CLI) for running commands on Red Hat Advanced Cluster Security for Kubernetes ([RHACS](redhat.com/en/technologies/cloud-computing/openshift/advanced-cluster-security-kubernetes)).
+This is a GitHub action for installing `roxctl` on Github Action runners. `roxctl` is a command-line interface (CLI) for running commands on Red Hat Advanced Cluster Security for Kubernetes ([RHACS](https://redhat.com/en/technologies/cloud-computing/openshift/advanced-cluster-security-kubernetes)).
 
 ### Example
 
