@@ -16,7 +16,7 @@ jobs:
       - name: Central Login
         uses: stackrox/central-login@v1
         with:
-          endpoint: "https://staging.demo.stackrox.com:443"
+          endpoint: https://${{ env.ROX_ENDPOINT }}
       - uses: stackrox/roxctl-installer-action@main
         with:
           install-dir: /usr/local/bin
