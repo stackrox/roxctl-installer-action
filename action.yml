@@ -50,7 +50,7 @@ runs:
             SKIP_TLS_VERIFY="-k "
         fi
         mkdir -p ${{ inputs.install-dir }}
-        curl -H "Authorization: Bearer ${{ inputs.central-token }}" "${SKIP_TLS_VERIFY}"--fail -S -L --retry 5 \
+        curl -H "Authorization: Bearer ${{ inputs.central-token }}" ${SKIP_TLS_VERIFY}--fail -S -L --retry 5 \
           "${ENDPOINT}${EXT}" --output "${{ inputs.install-dir }}/roxctl${EXT}"
         chmod +x "${{ inputs.install-dir }}/roxctl${EXT}"
         roxctl version
