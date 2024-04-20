@@ -2,21 +2,25 @@ name: Install roxctl
 description: Download roxctl for use in GitHub Actions
 inputs:
   roxctl-release:
-    description: 'roxctl release version to be installed'
+    description: "roxctl release version to be installed."
     required: false
-    default: 'latest'
+    default: "latest"
   install-dir:
-    description: 'Where to install the roxctl binary'
+    description: "Where to install the roxctl binary."
     required: false
-    default: '$HOME/.roxctl'
+    default: "$HOME/.roxctl"
   central-endpoint:
-    description: 'ACS Central endpoint to download roxctl from. If not specified, roxctl will be downloaded from mirror.openshift.com'
+    description: "ACS Central endpoint to download roxctl from. If not specified, roxctl will be downloaded from mirror.openshift.com."
     required: false
-    default: ''
+    default: ""
   central-token:
-    description: 'Token to access ACS Central endpoint.'
+    description: "Token to access ACS Central endpoint."
     required: false
-    default: ''
+    default: ""
+  skip-tls-verify:
+    description: "Skip TLS certificate verification for Central's API endpoint."
+    required: false
+    default: "false"
 runs:
   using: composite
   steps:
@@ -41,7 +45,12 @@ runs:
         else
           ENDPOINT="${{ inputs.central-endpoint}}/api/cli/download/roxctl-${OS}-amd64"
         fi
+        SKIP_TLS_VERIFY=""
+        if [[ '${{ inputs.skip-tls-verify }}' == "true" ]]; then
+            SKIP_TLS_VERIFY="-k "
+        fi
         mkdir -p ${{ inputs.install-dir }}
-        curl -H "Authorization: Bearer ${{ inputs.central-token }}" --fail -sL "${ENDPOINT}${EXT}" --output "${{ inputs.install-dir }}/roxctl${EXT}"
+        curl -H "Authorization: Bearer ${{ inputs.central-token }}" "${SKIP_TLS_VERIFY}"--fail -S -L --retry 5 \
+          "${ENDPOINT}${EXT}" --output "${{ inputs.install-dir }}/roxctl${EXT}"
         chmod +x "${{ inputs.install-dir }}/roxctl${EXT}"
         roxctl version
