@@ -32,10 +32,10 @@ jobs:
 
 ### Parameters
 
-| Parameter name     | Required? | Description                                                                                                                                                         |
-|--------------------| --- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `install-dir`      | (optional) | Path of directory to install `roxctl` to.                                                                                                                           |
-| `version`          | (optional) | `roxctl` release version to use, e.g. "4.4.0". The latest available version is used by default. Ignored when `central-endpoint` is specified.                       |
+| Parameter name     | Required?  | Description                                                                                                                                                          |
+|--------------------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `install-dir`      | (optional) | Path of directory to install `roxctl` to.                                                                                                                            |
+| `version`          | (optional) | `roxctl` release version to use, e.g. "4.4.0". The latest available version is used by default. Ignored when `central-endpoint` is specified.                        |
 | `central-endpoint` | (optional) | RHACS Central endpoint to download `roxctl` from. If left unspecified, `roxctl` is downloaded from mirror.openshift.com instead. Requires `central-token` to be set. |
-| `central-token`    | (optional) | Token to access RHACS Central endpoint.                                                         |
-| `skip-tls-verify`  | (optional) | Skip TLS certificate verification for Central's API endpoint. `false` by default. |
+| `central-token`    | (optional) | Token to access RHACS Central endpoint.                                                                                                                              |
+| `skip-tls-verify`  | (optional) | Skip TLS certificate verification for Central's API endpoint. `false` by default.                                                                                    |
