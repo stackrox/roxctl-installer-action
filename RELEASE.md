@@ -1,6 +1,6 @@
 # Releasing a new version
 
-This documents all steps requires to release a new version of the central-login GitHub Action.
+This documents all steps requires to release a new version of the roxctl-installer GitHub Action.
 
 ## Create a new GitHub release incl. tag
 
