@@ -45,6 +45,13 @@ runs:
         else
           ENDPOINT="${{ inputs.central-endpoint}}/api/cli/download/roxctl-${OS}-amd64"
         fi
+
+        # In case we get a central-endpoint and it didn't start with a scheme (e.g. when using the output
+        # from central-login), add a HTTPS prefix.
+        if [[ "${ENDPOINT#https://}" == "${ENDPOINT}" ]]; then
+        ENDPOINT="https://${ENDPOINT}"
+        fi
+
         SKIP_TLS_VERIFY=""
         if [[ '${{ inputs.skip-tls-verify }}' == "true" ]]; then
             SKIP_TLS_VERIFY="-k "

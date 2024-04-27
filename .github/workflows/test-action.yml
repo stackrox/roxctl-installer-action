@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
         version: [ latest, 4.3.0 ]
-        central-endpoint: [ '', 'https://staging.demo.stackrox.com']
+        central-endpoint: [ '', 'https://staging.demo.stackrox.com', 'staging.demo.stackrox.com:443']
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
