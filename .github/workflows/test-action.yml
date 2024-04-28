@@ -5,15 +5,20 @@ name: roxctl action development self-test
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test-install:
     strategy:
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
-        version: [ latest, 4.3.0 ]
-        central-endpoint: [ '', 'https://staging.demo.stackrox.com', 'staging.demo.stackrox.com:443']
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        version: [latest, 4.3.0]
+        central-endpoint:
+          [
+            "",
+            "https://staging.demo.stackrox.com",
+            "staging.demo.stackrox.com:443"
+          ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
