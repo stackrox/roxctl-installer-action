@@ -9,26 +9,39 @@ on:
 
 jobs:
   test-install:
+    permissions:
+      # Needed for stackrox/central-login to create the JWT token.
+      id-token: write
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         version: [latest, 4.3.0]
-        central-endpoint:
-          [
-            "",
-            "https://staging.demo.stackrox.com",
-            "staging.demo.stackrox.com:443"
-          ]
+        central-endpoint: ["empty", "https-prefix", "no-prefix"]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - name: Central login
+        uses: stackrox/central-login@v1
+        with:
+          endpoint: ${{ vars.ACS_DOGFOODING_CENTRAL_URL }}
+      - name: Set CENTRAL_ENDPOINT env variable
+        shell: bash
+        run: |
+          if [[ "${{ matrix.central-endpoint }}" == "https-prefix" ]]; then
+            CENTRAL_ENDPOINT="${{ vars.ACS_DOGFOODING_CENTRAL_URL }}"
+          elif [[ "${{ matrix.central-endpoint }}" == "no-prefix" ]]; then
+            # Strip "https://" prefix and add ":443" suffix.
+            CENTRAL_ENDPOINT="${{ vars.ACS_DOGFOODING_CENTRAL_URL }}"
+            CENTRAL_ENDPOINT="${CENTRAL_ENDPOINT#https://}:443"
+          fi
+          echo "CENTRAL_ENDPOINT=${CENTRAL_ENDPOINT}" >> "$GITHUB_ENV"
       - name: Install roxctl
         uses: ./
         with:
           roxctl-release: ${{ matrix.version }}
-          central-endpoint: ${{ matrix.central-endpoint }}
-          central-token: ${{ secrets.STAGING_API_TOKEN }}
-
+          central-endpoint: ${{ env.CENTRAL_ENDPOINT }}
+          central-token: ${{ env.ROX_API_TOKEN }}
       - name: Validate the roxctl install
         shell: bash
         run: roxctl version
