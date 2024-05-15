@@ -26,6 +26,8 @@ This is a GitHub action for installing `roxctl` on Github Action runners. `roxct
 
 ## Authentication
 
+### Authenticate with short-lived access tokens
+
 Short-lived access tokens are the recommended authentication method when using `roxctl` in GitHub workflows.
 To generate a suitable token, configure a machine access configuration in Central and run the
 [central-login](https://github.com/stackrox/central-login) Github Action to set up an authenticated environment.
@@ -38,8 +40,6 @@ For example, to allow access from GitHub workflows in the `stackrox/stackrox` re
 ![](./docs/images/machine-access.png)
 
 The following examples assume `env.CENTRAL_ENDPOINT=https://my-central.com` to be a valid Central URL.
-
-### Authenticate with short-lived access tokens
 
 See [Scan images in CI pipeline](#scan-images-in-ci-pipelines) and [Check images in CI pipeline](#check-images-in-ci-pipelines) for full length examples.
 
