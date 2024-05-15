@@ -11,9 +11,9 @@ This is a GitHub action for installing `roxctl` on Github Action runners. `roxct
   - [Authenticate with short-lived access tokens](#authenticate-with-short-lived-access-tokens)
   - [Authenticate with long-lived API tokens](#authenticate-with-long-lived-api-tokens)
 - [Usage](#usage)
-  - [Scan images in CI pipeline](#scan-images-in-ci-pipelines)
-  - [Check images in CI pipeline](#check-images-in-ci-pipelines)
-  - [Download roxctl from mirror.openshift.com](#download-roxctl-from-mirror-openshift-com)
+  - [Scan images in CI pipelines](#scan-images-in-ci-pipelines)
+  - [Check images in CI pipelines](#check-images-in-ci-pipelines)
+  - [Download roxctl from mirror.openshift.com](#download-roxctl-from-mirroropenshiftcom)
   - [GitHub code scanning](#github-code-scanning)
 
 ## Parameters
@@ -43,7 +43,7 @@ For example, to allow access from GitHub workflows in the `stackrox/stackrox` re
 
 The following examples assume `env.CENTRAL_ENDPOINT=https://my-central.com` to be a valid Central URL.
 
-See [Scan images in CI pipeline](#scan-images-in-ci-pipelines) and [Check images in CI pipeline](#check-images-in-ci-pipelines) for full length examples.
+See [Scan images in CI pipelines](#scan-images-in-ci-pipelines) and [Check images in CI pipelines](#check-images-in-ci-pipelines) for full length examples.
 
 ```yaml
 steps:
@@ -95,7 +95,7 @@ jobs:
 
 ### Scan images in CI pipelines
 
-See `roxctl image scan`](https://docs.openshift.com/acs/4.4/cli/command-reference/roxctl-image.html#roxctl-image-scan_roxctl-image)
+See [`roxctl image scan`](https://docs.openshift.com/acs/4.4/cli/command-reference/roxctl-image.html#roxctl-image-scan_roxctl-image)
 for the full parameter list.
 
 ```yaml
@@ -159,7 +159,7 @@ jobs:
 
 ### Download roxctl from mirror.openshift.com
 
-See `roxctl image scan`](https://docs.openshift.com/acs/4.4/cli/command-reference/roxctl-image.html#roxctl-image-scan_roxctl-image)
+See [`roxctl image scan`](https://docs.openshift.com/acs/4.4/cli/command-reference/roxctl-image.html#roxctl-image-scan_roxctl-image)
 for the full parameter list.
 
 ```yaml
@@ -190,7 +190,7 @@ jobs:
 
 ### GitHub code scanning
 
-See `roxctl image scan`](https://docs.openshift.com/acs/4.4/cli/command-reference/roxctl-image.html#roxctl-image-scan_roxctl-image)
+See [`roxctl image scan`](https://docs.openshift.com/acs/4.4/cli/command-reference/roxctl-image.html#roxctl-image-scan_roxctl-image)
 for the full parameter list.
 
 ```yaml
