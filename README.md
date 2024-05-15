@@ -7,12 +7,14 @@ This is a GitHub action for installing `roxctl` on Github Action runners. `roxct
 ## Table of Contents
 
 - [Parameters](#parameters)
+- [Authentication](#authentication)
+  - [Authenticate with short-lived access tokens](#authenticate-with-short-lived-access-tokens)
+  - [Authenticate with long-lived API tokens](#authenticate-with-long-lived-api-tokens)
 - [Usage](#usage)
   - [Scan images in CI pipeline](#scan-images-in-ci-pipelines)
   - [Check images in CI pipeline](#check-images-in-ci-pipelines)
   - [Download roxctl from mirror.openshift.com](#download-roxctl-from-mirror-openshift-com)
   - [GitHub code scanning](#github-code-scanning)
-  - [Authenticate with static API tokens](#authenticate-with-static-api-tokens)
 
 ## Parameters
 
