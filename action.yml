@@ -34,10 +34,8 @@ runs:
       run: echo "${{ inputs.install-dir }}" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
     - name: Download roxctl
       shell: bash
-      env:
-        ACTIONS_STEP_DEBUG: '${{ secrets.ACTIONS_STEP_DEBUG }}'
       run: |
-        set -euo pipefail ${ACTIONS_STEP_DEBUG:+-x}
+        set -euo pipefail ${RUNNER_DEBUG:+-x}
         case "${{ runner.os }}" in
           macOS)   OS=darwin EXT='' ;;
           Windows) OS=windows EXT='.exe' ;;
@@ -59,7 +57,7 @@ runs:
         fi
         mkdir -p ${{ inputs.install-dir }}
         curl -H "Authorization: Bearer ${{ inputs.central-token }}" -H "User-Agent: roxctl-installer-GHA" \
-          ${ACTIONS_STEP_DEBUG:+--verbose} \
+          ${RUNNER_DEBUG:+--verbose} \
           ${SKIP_TLS_VERIFY}--fail -S -L --retry 5 \
           "${ENDPOINT}${EXT}" --output "${{ inputs.install-dir }}/roxctl${EXT}"
         chmod +x "${{ inputs.install-dir }}/roxctl${EXT}"
