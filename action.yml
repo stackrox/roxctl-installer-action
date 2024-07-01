@@ -35,6 +35,7 @@ runs:
     - name: Download roxctl
       shell: bash
       run: |
+        set -euo pipefail ${RUNNER_DEBUG:+-x}
         case "${{ runner.os }}" in
           macOS)   OS=darwin EXT='' ;;
           Windows) OS=windows EXT='.exe' ;;
@@ -56,6 +57,7 @@ runs:
         fi
         mkdir -p ${{ inputs.install-dir }}
         curl -H "Authorization: Bearer ${{ inputs.central-token }}" -H "User-Agent: roxctl-installer-GHA" \
+          ${RUNNER_DEBUG:+--verbose} \
           ${SKIP_TLS_VERIFY}--fail -S -L --retry 5 \
           "${ENDPOINT}${EXT}" --output "${{ inputs.install-dir }}/roxctl${EXT}"
         chmod +x "${{ inputs.install-dir }}/roxctl${EXT}"
