@@ -56,7 +56,7 @@ runs:
         fi
         mkdir -p ${{ inputs.install-dir }}
         curl -H "Authorization: Bearer ${{ inputs.central-token }}" -H "User-Agent: roxctl-installer-GHA" \
-          ${SKIP_TLS_VERIFY}--fail -S -L --retry 5 \
+          ${SKIP_TLS_VERIFY}--fail -S -L --retry 5 --silent \
           "${ENDPOINT}${EXT}" --output "${{ inputs.install-dir }}/roxctl${EXT}"
         chmod +x "${{ inputs.install-dir }}/roxctl${EXT}"
         roxctl version
