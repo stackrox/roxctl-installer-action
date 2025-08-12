@@ -20,7 +20,7 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0 # Required since we need to ensure all tags are contained within the checkout.
           token: ${{ secrets.RHACS_BOT_GITHUB_TOKEN }}
